@@ -3,3 +3,12 @@
 #fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG
 #use delay(clock=32000000)
 
+void main (void)
+{
+   setup_oscillator(OSC_32MHZ);
+   
+   while(TRUE)
+   {
+      
+   }
+}   
