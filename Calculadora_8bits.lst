@@ -1,0 +1,70 @@
+CCS PCH C Compiler, Version 5.012, 41559               18-mar.-17 17:43
+
+               Filename:   C:\Users\David\Documents\GitHub\Practica\Calculadora_8bits.lst
+
+               ROM used:   44 bytes (0%)
+                           Largest free fragment is 65492
+               RAM used:   4 (0%) at main() level
+                           4 (0%) worst case
+               Stack used: 0 locations
+               Stack size: 31
+
+*
+00000:  GOTO   0004
+.................... #include <18F4620.h> 
+.................... ///////////// Standard Header file for the PIC18F4620 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4620 
+....................  
+.................... #list 
+....................  
+.................... #fuses INTRC_IO, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT 
+.................... #fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG 
+.................... #use delay(clock=32000000) 
+....................  
+.................... void main (void) 
+00004:  CLRF   FF8
+00006:  BCF    FD0.7
+00008:  MOVLW  70
+0000A:  MOVWF  FD3
+0000C:  MOVLW  40
+0000E:  MOVWF  F9B
+00010:  MOVF   FD3,W
+00012:  MOVF   FC1,W
+00014:  ANDLW  C0
+00016:  IORLW  0F
+00018:  MOVWF  FC1
+0001A:  MOVLW  07
+0001C:  MOVWF  FB4
+.................... { 
+....................    setup_oscillator(OSC_32MHZ); 
+0001E:  MOVLW  70
+00020:  MOVWF  FD3
+00022:  MOVLW  40
+00024:  MOVWF  F9B
+00026:  MOVF   FD3,W
+....................     
+....................    while(TRUE) 
+....................    { 
+00028:  BRA    0028
+....................        
+....................    } 
+.................... }    
+0002A:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 0800   INTRC_IO NOFCMEN NOIESO
+   Word  2: 1E18   PUT NOBROWNOUT BORV21 NOWDT WDT32768
+   Word  3: 0500   CCP2C1 NOPBADEN LPT1OSC NOMCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB
