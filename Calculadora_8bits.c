@@ -3,6 +3,7 @@
 #fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG
 #use delay(clock=32000000)
 #use standard_io(b)
+#use standard_io(a)
 #define retardo 500
 
 void error();
