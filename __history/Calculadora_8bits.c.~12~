@@ -21,15 +21,14 @@ void main (void){
    {
    resultado = operando1 - operando2;
    }
-   if(input(PIN_B5) == 1)
+   if(input(PIN_B3) == 1)
    {
    resultado = operando1 * operando2;
    }
-   if(input(PIN_B6) == 1)
+   if(input(PIN_B3) == 1)
    {
    if(input_d()==0)
    error();
-   break;
    }
    }
 }   

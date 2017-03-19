@@ -29,7 +29,6 @@ void main (void){
    {
    if(input_d()==0)
    error();
-   break;
    }
    }
 }   

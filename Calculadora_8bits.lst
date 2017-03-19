@@ -1,9 +1,9 @@
-CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:02
+CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:04
 
                Filename:   C:\Users\lazaax\Documents\GitHub\Practica\Calculadora_8bits.lst
 
-               ROM used:   190 bytes (0%)
-                           Largest free fragment is 65346
+               ROM used:   192 bytes (0%)
+                           Largest free fragment is 65344
                RAM used:   9 (0%) at main() level
                            11 (0%) worst case
                Stack used: 2 locations
@@ -104,9 +104,9 @@ CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:02
 00098:  MOVWF  05
 0009A:  CLRF   06
 ....................    } 
-....................    if(input(PIN_B3) == 1) 
-0009C:  BSF    F93.3
-0009E:  BTFSS  F81.3
+....................    if(input(PIN_B5) == 1) 
+0009C:  BSF    F93.5
+0009E:  BTFSS  F81.5
 000A0:  BRA    00AC
 ....................    { 
 ....................    resultado = operando1 * operando2; 
@@ -116,10 +116,10 @@ CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:02
 000A8:  CLRF   06
 000AA:  MOVWF  05
 ....................    } 
-....................    if(input(PIN_B3) == 1) 
-000AC:  BSF    F93.3
-000AE:  BTFSS  F81.3
-000B0:  BRA    00BA
+....................    if(input(PIN_B6) == 1) 
+000AC:  BSF    F93.6
+000AE:  BTFSS  F81.6
+000B0:  BRA    00BC
 ....................    { 
 ....................    if(input_d()==0) 
 000B2:  SETF   F95
@@ -127,12 +127,14 @@ CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:02
 000B6:  BNZ   00BA
 ....................    error(); 
 000B8:  BRA    002C
+....................    break; 
+000BA:  BRA    00BE
 ....................    } 
-000BA:  BRA    0080
+000BC:  BRA    0080
 ....................    } 
 .................... }    
 .................... void error() 
-000BC:  SLEEP 
+000BE:  SLEEP 
 .................... { 
 ....................    int i; 
 ....................    for(i=0;i<5;i++) 
