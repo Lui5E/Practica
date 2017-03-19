@@ -8,8 +8,6 @@
 void error();
 
 void main (void){
-   set_tris_c(0b11111111);
-   set_tris_d(0b11111111);
    int16 resultado=0;
    int8 operando1=0,operando2=0;
    setup_oscillator(OSC_32MHZ);

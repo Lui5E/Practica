@@ -1,10 +1,10 @@
-CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:04
+CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 22:25
 
                Filename:   C:\Users\lazaax\Documents\GitHub\Practica\Calculadora_8bits.lst
 
-               ROM used:   192 bytes (0%)
-                           Largest free fragment is 65344
-               RAM used:   9 (0%) at main() level
+               ROM used:   210 bytes (0%)
+                           Largest free fragment is 65326
+               RAM used:   5 (0%) at main() level
                            11 (0%) worst case
                Stack used: 2 locations
                Stack size: 31
@@ -68,73 +68,84 @@ CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:04
 00068:  MOVWF  FC1
 0006A:  MOVLW  07
 0006C:  MOVWF  FB4
-0006E:  CLRF   06
-00070:  CLRF   05
-00072:  CLRF   07
-00074:  CLRF   08
+....................    set_tris_c(0b11111111); 
+0006E:  MOVLW  FF
+00070:  MOVWF  F94
+....................    set_tris_d(0b11111111); 
+00072:  MOVWF  F95
 ....................    int16 resultado=0; 
 ....................    int8 operando1=0,operando2=0; 
+00074:  CLRF   06
+00076:  CLRF   05
+00078:  CLRF   07
+0007A:  CLRF   08
 ....................    setup_oscillator(OSC_32MHZ); 
-00076:  MOVLW  70
-00078:  MOVWF  FD3
-0007A:  MOVLW  40
-0007C:  MOVWF  F9B
-0007E:  MOVF   FD3,W
+0007C:  MOVLW  70
+0007E:  MOVWF  FD3
+00080:  MOVLW  40
+00082:  MOVWF  F9B
+00084:  MOVF   FD3,W
 ....................     
 ....................    while(True){ 
+....................    operando1=input_c(); 
+00086:  SETF   F94
+00088:  MOVFF  F82,07
+....................    operando2=input_d(); 
+0008C:  SETF   F95
+0008E:  MOVFF  F83,08
 ....................    if(input(PIN_B3) == 1){ 
-00080:  BSF    F93.3
-00082:  BTFSS  F81.3
-00084:  BRA    008E
+00092:  BSF    F93.3
+00094:  BTFSS  F81.3
+00096:  BRA    00A0
 ....................    resultado = operando1 + operando2; 
-00086:  MOVF   08,W
-00088:  ADDWF  07,W
-0008A:  MOVWF  05
-0008C:  CLRF   06
+00098:  MOVF   08,W
+0009A:  ADDWF  07,W
+0009C:  MOVWF  05
+0009E:  CLRF   06
 ....................        
 ....................    } 
 ....................    if(input(PIN_B4) == 1) 
-0008E:  BSF    F93.4
-00090:  BTFSS  F81.4
-00092:  BRA    009C
+000A0:  BSF    F93.4
+000A2:  BTFSS  F81.4
+000A4:  BRA    00AE
 ....................    { 
 ....................    resultado = operando1 - operando2; 
-00094:  MOVF   08,W
-00096:  SUBWF  07,W
-00098:  MOVWF  05
-0009A:  CLRF   06
+000A6:  MOVF   08,W
+000A8:  SUBWF  07,W
+000AA:  MOVWF  05
+000AC:  CLRF   06
 ....................    } 
 ....................    if(input(PIN_B5) == 1) 
-0009C:  BSF    F93.5
-0009E:  BTFSS  F81.5
-000A0:  BRA    00AC
+000AE:  BSF    F93.5
+000B0:  BTFSS  F81.5
+000B2:  BRA    00BE
 ....................    { 
 ....................    resultado = operando1 * operando2; 
-000A2:  MOVF   07,W
-000A4:  MULWF  08
-000A6:  MOVF   FF3,W
-000A8:  CLRF   06
-000AA:  MOVWF  05
+000B4:  MOVF   07,W
+000B6:  MULWF  08
+000B8:  MOVF   FF3,W
+000BA:  CLRF   06
+000BC:  MOVWF  05
 ....................    } 
 ....................    if(input(PIN_B6) == 1) 
-000AC:  BSF    F93.6
-000AE:  BTFSS  F81.6
-000B0:  BRA    00BC
+000BE:  BSF    F93.6
+000C0:  BTFSS  F81.6
+000C2:  BRA    00CE
 ....................    { 
 ....................    if(input_d()==0) 
-000B2:  SETF   F95
-000B4:  MOVF   F83,F
-000B6:  BNZ   00BA
+000C4:  SETF   F95
+000C6:  MOVF   F83,F
+000C8:  BNZ   00CC
 ....................    error(); 
-000B8:  BRA    002C
+000CA:  BRA    002C
 ....................    break; 
-000BA:  BRA    00BE
+000CC:  BRA    00D0
 ....................    } 
-000BC:  BRA    0080
+000CE:  BRA    0086
 ....................    } 
 .................... }    
 .................... void error() 
-000BE:  SLEEP 
+000D0:  SLEEP 
 .................... { 
 ....................    int i; 
 ....................    for(i=0;i<5;i++) 
@@ -162,7 +173,7 @@ CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:04
 0004C:  INCF   09,F
 0004E:  BRA    002E
 ....................    } 
-00050:  GOTO   00BA (RETURN)
+00050:  GOTO   00CC (RETURN)
 .................... } 
 
 Configuration Fuses:
