@@ -3,37 +3,46 @@
 001     _RETURN_
 002     @SCRATCH
 003     @SCRATCH
+005-006 main.resultado
+007     main.operando1
+008     main.operando2
+009     error.i
+009     main.@SCRATCH1
+00A     error.@SCRATCH1
+00B     @delay_ms1.P1
 F83     PSP_DATA
 FB4.6   C1OUT
 FB4.7   C2OUT
-FBB     CCP_2_LOW
 FBB     CCP_2
+FBB     CCP_2_LOW
 FBC     CCP_2_HIGH
-FBE     CCP_1_LOW
 FBE     CCP_1
+FBE     CCP_1_LOW
 FBF     CCP_1_HIGH
 FE1-FE2 @WRITE_PACKED_MEMORY.P1
 FE1-FE2 @READ_PACKED_MEMORY.P2
-FE9-FEA @READ_PACKED_MEMORY.P1
-FE9-FEA @WRITE_PROGRAM_MEMORY.P2
-FE9-FEA @READ_PROGRAM_MEMORY.P3
-FE9-FEA @WRITE_PACKED_MEMORY.P4
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
 FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
 FF6-FF8 @READ_PROGRAM_MEMORY.P2
 
 ROM Allocation:
-000004  main
-000004  @cinit1
-00001E  @cinit2
+000004  @delay_ms1
+00002C  error
+000054  main
+000054  @cinit1
+00006E  @cinit2
 
 Project Directory:
     C:\Users\lazaax\Documents\GitHub\Practica\
 
 Project Files:
-    Calculadora_8bits.c                                     [18-mar-17 19:40  CRC=D872A938]
+    Calculadora_8bits.c                                     [18-mar-17 20:00  CRC=CA0D97F4]
     ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep-13 16:34  CRC=044A57BA]
 
-Source signature=E10758AC
+Source signature=D2A24768
 
 Units:
     Calculadora_8bits (main)

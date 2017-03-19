@@ -1,16 +1,16 @@
-CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 19:41
+CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:00
 
                Filename:   C:\Users\lazaax\Documents\GitHub\Practica\Calculadora_8bits.lst
 
-               ROM used:   44 bytes (0%)
-                           Largest free fragment is 65492
-               RAM used:   4 (0%) at main() level
-                           4 (0%) worst case
-               Stack used: 0 locations
+               ROM used:   190 bytes (0%)
+                           Largest free fragment is 65346
+               RAM used:   9 (0%) at main() level
+                           11 (0%) worst case
+               Stack used: 2 locations
                Stack size: 31
 
 *
-00000:  GOTO   0004
+00000:  GOTO   0054
 .................... #include <18F4620.h> 
 .................... ///////////// Standard Header file for the PIC18F4620 device //////////////// 
 .................... /////////////////////////////////////////////////////////////////////////// 
@@ -29,34 +29,137 @@ CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 19:41
 .................... #fuses INTRC_IO, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT 
 .................... #fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG 
 .................... #use delay(clock=32000000) 
+00004:  CLRF   FEA
+00006:  MOVLW  0B
+00008:  MOVWF  FE9
+0000A:  MOVF   FEF,W
+0000C:  BZ    0028
+0000E:  MOVLW  0A
+00010:  MOVWF  01
+00012:  CLRF   00
+00014:  DECFSZ 00,F
+00016:  BRA    0014
+00018:  DECFSZ 01,F
+0001A:  BRA    0012
+0001C:  MOVLW  5F
+0001E:  MOVWF  00
+00020:  DECFSZ 00,F
+00022:  BRA    0020
+00024:  DECFSZ FEF,F
+00026:  BRA    000E
+00028:  GOTO   0048 (RETURN)
+.................... #use standard_io(b) 
+.................... #define retardo 500 
+....................  
+.................... void error(); 
 ....................  
 .................... void main (void){ 
-00004:  CLRF   FF8
-00006:  BCF    FD0.7
-00008:  MOVLW  70
-0000A:  MOVWF  FD3
-0000C:  MOVLW  40
-0000E:  MOVWF  F9B
-00010:  MOVF   FD3,W
-00012:  MOVF   FC1,W
-00014:  ANDLW  C0
-00016:  IORLW  0F
-00018:  MOVWF  FC1
-0001A:  MOVLW  07
-0001C:  MOVWF  FB4
+*
+00054:  CLRF   FF8
+00056:  BCF    FD0.7
+00058:  MOVLW  70
+0005A:  MOVWF  FD3
+0005C:  MOVLW  40
+0005E:  MOVWF  F9B
+00060:  MOVF   FD3,W
+00062:  MOVF   FC1,W
+00064:  ANDLW  C0
+00066:  IORLW  0F
+00068:  MOVWF  FC1
+0006A:  MOVLW  07
+0006C:  MOVWF  FB4
+0006E:  CLRF   06
+00070:  CLRF   05
+00072:  CLRF   07
+00074:  CLRF   08
+....................    int16 resultado=0; 
+....................    int8 operando1=0,operando2=0; 
 ....................    setup_oscillator(OSC_32MHZ); 
-0001E:  MOVLW  70
-00020:  MOVWF  FD3
-00022:  MOVLW  40
-00024:  MOVWF  F9B
-00026:  MOVF   FD3,W
+00076:  MOVLW  70
+00078:  MOVWF  FD3
+0007A:  MOVLW  40
+0007C:  MOVWF  F9B
+0007E:  MOVF   FD3,W
 ....................     
 ....................    while(True){ 
-00028:  BRA    0028
+....................    if(input(PIN_B3) == 1){ 
+00080:  BSF    F93.3
+00082:  BTFSS  F81.3
+00084:  BRA    008E
+....................    resultado = operando1 + operando2; 
+00086:  MOVF   08,W
+00088:  ADDWF  07,W
+0008A:  MOVWF  05
+0008C:  CLRF   06
 ....................        
 ....................    } 
+....................    if(input(PIN_B4) == 1) 
+0008E:  BSF    F93.4
+00090:  BTFSS  F81.4
+00092:  BRA    009C
+....................    { 
+....................    resultado = operando1 - operando2; 
+00094:  MOVF   08,W
+00096:  SUBWF  07,W
+00098:  MOVWF  05
+0009A:  CLRF   06
+....................    } 
+....................    if(input(PIN_B3) == 1) 
+0009C:  BSF    F93.3
+0009E:  BTFSS  F81.3
+000A0:  BRA    00AC
+....................    { 
+....................    resultado = operando1 * operando2; 
+000A2:  MOVF   07,W
+000A4:  MULWF  08
+000A6:  MOVF   FF3,W
+000A8:  CLRF   06
+000AA:  MOVWF  05
+....................    } 
+....................    if(input(PIN_B3) == 1) 
+000AC:  BSF    F93.3
+000AE:  BTFSS  F81.3
+000B0:  BRA    00BA
+....................    { 
+....................    if(input_d()==0) 
+000B2:  SETF   F95
+000B4:  MOVF   F83,F
+000B6:  BNZ   00BA
+....................    error(); 
+000B8:  BRA    002C
+....................    } 
+000BA:  BRA    0080
+....................    } 
 .................... }    
-0002A:  SLEEP 
+.................... void error() 
+000BC:  SLEEP 
+.................... { 
+....................    int i; 
+....................    for(i=0;i<5;i++) 
+*
+0002C:  CLRF   09
+0002E:  MOVF   09,W
+00030:  SUBLW  04
+00032:  BNC   003E
+....................    output_b(0b00000001); 
+00034:  CLRF   F93
+00036:  MOVLW  01
+00038:  MOVWF  F8A
+0003A:  INCF   09,F
+0003C:  BRA    002E
+....................    delay_ms(retardo); 
+0003E:  MOVLW  02
+00040:  MOVWF  0A
+00042:  MOVLW  FA
+00044:  MOVWF  0B
+00046:  BRA    0004
+00048:  DECFSZ 0A,F
+0004A:  BRA    0042
+....................    output_b(0b00000000); 
+0004C:  CLRF   F93
+0004E:  CLRF   F8A
+00050:  GOTO   00BA (RETURN)
+.................... } 
 
 Configuration Fuses:
    Word  1: 0800   INTRC_IO NOFCMEN NOIESO
