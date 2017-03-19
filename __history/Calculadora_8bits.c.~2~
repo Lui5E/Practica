@@ -6,7 +6,7 @@
 void main (void){
    setup_oscillator(OSC_32MHZ);
    
-   while(True){
+   while(true){
       
    }
 }   
