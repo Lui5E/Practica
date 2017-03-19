@@ -36,9 +36,7 @@ void error()
 {
    int i;
    for(i=0;i<5;i++)
-   {
    output_b(0b00000001);
    delay_ms(retardo);
    output_b(0b00000000);
-   }
 }

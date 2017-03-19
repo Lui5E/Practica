@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:00
+CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:02
 
                Filename:   C:\Users\lazaax\Documents\GitHub\Practica\Calculadora_8bits.lst
 
@@ -47,7 +47,7 @@ CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:00
 00022:  BRA    0020
 00024:  DECFSZ FEF,F
 00026:  BRA    000E
-00028:  GOTO   0048 (RETURN)
+00028:  GOTO   0044 (RETURN)
 .................... #use standard_io(b) 
 .................... #define retardo 500 
 ....................  
@@ -140,24 +140,26 @@ CCS PCH C Compiler, Version 5.012, 41559               18-mar-17 20:00
 0002C:  CLRF   09
 0002E:  MOVF   09,W
 00030:  SUBLW  04
-00032:  BNC   003E
+00032:  BNC   0050
+....................    { 
 ....................    output_b(0b00000001); 
 00034:  CLRF   F93
 00036:  MOVLW  01
 00038:  MOVWF  F8A
-0003A:  INCF   09,F
-0003C:  BRA    002E
 ....................    delay_ms(retardo); 
-0003E:  MOVLW  02
-00040:  MOVWF  0A
-00042:  MOVLW  FA
-00044:  MOVWF  0B
-00046:  BRA    0004
-00048:  DECFSZ 0A,F
-0004A:  BRA    0042
+0003A:  MOVLW  02
+0003C:  MOVWF  0A
+0003E:  MOVLW  FA
+00040:  MOVWF  0B
+00042:  BRA    0004
+00044:  DECFSZ 0A,F
+00046:  BRA    003E
 ....................    output_b(0b00000000); 
-0004C:  CLRF   F93
-0004E:  CLRF   F8A
+00048:  CLRF   F93
+0004A:  CLRF   F8A
+0004C:  INCF   09,F
+0004E:  BRA    002E
+....................    } 
 00050:  GOTO   00BA (RETURN)
 .................... } 
 
