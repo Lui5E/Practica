@@ -39,7 +39,6 @@ void main (void){
    error();
    break;
    }
-   resultado = operando1 / operando2;
    }
    operando1=0;
    }

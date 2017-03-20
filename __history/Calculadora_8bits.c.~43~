@@ -4,13 +4,15 @@
 #use delay(clock=32000000)
 #use standard_io(b)
 #use standard_io(a)
+#use standard_io(c)
+#use standard_io(d)
 #define retardo 500
 
 void error();
 
 void main (void){
-   set_tris_c(0b11111111); //habilito port como input
-   set_tris_d(0b11111111); //habilito port como input
+   //set_tris_c(0b11111111); //habilito port como input
+   //set_tris_d(0b11111111); //habilito port como input
    int16 resultado=0;
    int8 operando1=0,operando2=0;
    setup_oscillator(OSC_32MHZ);
@@ -39,9 +41,8 @@ void main (void){
    error();
    break;
    }
-   resultado = operando1 / operando2;
    }
-   operando1=0;
+   output_c(0);
    }
 }   
 void error()

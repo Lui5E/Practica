@@ -1,9 +1,9 @@
 
-ROM used:   210/65536 (0%)
-            210/65536 (0%) including unused fragments
+ROM used:   270/65536 (0%)
+            270/65536 (0%) including unused fragments
 
-            0.2 Average locations per line
-            7.8 Average locations per statement
+            0.3 Average locations per line
+            9.0 Average locations per statement
 
 RAM used:   5/3968 (0%) at main() level
             11/3968 (0%) worst case
@@ -13,34 +13,35 @@ Stack size: 31
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   50    27 100  Calculadora_8bits.c
+   57    30 100  Calculadora_8bits.c
   834     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h
 ----- -----
-  884    27 Total
+  891    30 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
-0     40  10    1             @delay_ms1
-0    126  30    1   609  5.7  main
-0     40  10    2   134  3.0  error
+0     40   7    1             @delay_ms1
+0    144  27    1   690  6.2  main
+0     42   8    3   134  3.0  @DIV88
+0     40   7    2   134  3.0  error
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               2
-    Statements              27
-    Comments                149
-    Volume (V)              852
-    Difficulty (D)          8.6
-    Effort to implement (E) 7322
-    Time to implement (T)   7 minutes
+    Functions               3
+    Statements              30
+    Comments                152
+    Volume (V)              1187
+    Difficulty (D)          12.2
+    Effort to implement (E) 14477
+    Time to implement (T)   13 minutes
     Est Delivered Bugs (B)  0
-    Cyclomatic Complexity   6
-    Maintainability (MI)    133
+    Cyclomatic Complexity   7
+    Maintainability (MI)    52
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
-00004-0FFFE   206  65326  
+00004-0FFFE   266  65266  
 
 
 

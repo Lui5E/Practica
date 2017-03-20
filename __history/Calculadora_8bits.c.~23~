@@ -9,8 +9,8 @@
 void error();
 
 void main (void){
-   set_tris_c(0b11111111); //habilito port como input
-   set_tris_d(0b11111111); //habilito port como input
+   set_tris_c(1); //habilito port como input
+   set_tris_d(1); //habilito port como input
    int16 resultado=0;
    int8 operando1=0,operando2=0;
    setup_oscillator(OSC_32MHZ);
@@ -18,8 +18,6 @@ void main (void){
    while(True){
    operando1=input_c();
    operando2=input_d();
-   
-   //operando2=input_d();
    if(input(PIN_B3) == 1){
    resultado = operando1 + operando2;
       
@@ -39,9 +37,7 @@ void main (void){
    error();
    break;
    }
-   resultado = operando1 / operando2;
    }
-   operando1=0;
    }
 }   
 void error()

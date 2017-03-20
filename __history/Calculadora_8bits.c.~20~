@@ -18,8 +18,6 @@ void main (void){
    while(True){
    operando1=input_c();
    operando2=input_d();
-   
-   //operando2=input_d();
    if(input(PIN_B3) == 1){
    resultado = operando1 + operando2;
       
@@ -35,13 +33,9 @@ void main (void){
    if(input(PIN_B6) == 1)
    {
    if(input_d()==0)
-   {
    error();
    break;
    }
-   resultado = operando1 / operando2;
-   }
-   operando1=0;
    }
 }   
 void error()
