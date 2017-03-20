@@ -1,8 +1,8 @@
 D G "retardo" 0 7 "500"
-D G "__PCH__" 0 58 ""5.012""
-D G "__DEVICE__" 0 58 "4620"
-D G "__DATE__" 0 58 ""19-mar-17""
-D G "__TIME__" 0 58 ""22:12:06"" "Standard Header file for the PIC18F4620 device ////////////////"
+D G "__PCH__" 0 60 ""5.012""
+D G "__DEVICE__" 0 60 "4620"
+D G "__DATE__" 0 60 ""19-mar-17""
+D G "__TIME__" 0 60 ""22:32:28"" "Standard Header file for the PIC18F4620 device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
 v L "value" 1 43 "int8" `54 
 f B "set_tris_a" 1 43 "void(int8 value)" `53 
@@ -915,11 +915,12 @@ F G "main" 0 11 "void()" `639
 C L "main" 0 12 1 "FUNCTION"
 C L "main" 0 12 1 "FUNCTION"
 V L "resultado" 0 14 "int16" `642 
-V L "operando1" 0 15 "int8" `643 
-V L "operando2" 0 15 "int8" `644 
+V L "operacion" 0 15 "int8" `643 
+V L "operando1" 0 16 "int8" `644 
+V L "operando2" 0 16 "int8" `645 
 C L "main" 0 12 1 "FUNCTION"
-F G "error" 0 48 "void()" `638 
-V L "i" 0 49 "int8" `648 
+F G "error" 0 53 "void()" `638 
+V L "i" 0 54 "int8" `649 
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

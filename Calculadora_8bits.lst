@@ -1,11 +1,11 @@
-CCS PCH C Compiler, Version 5.012, 41559               19-mar-17 22:12
+CCS PCH C Compiler, Version 5.012, 41559               19-mar-17 22:32
 
                Filename:   C:\Users\lazaax\Documents\GitHub\Practica\Calculadora_8bits.lst
 
-               ROM used:   270 bytes (0%)
-                           Largest free fragment is 65266
+               ROM used:   304 bytes (0%)
+                           Largest free fragment is 65232
                RAM used:   5 (0%) at main() level
-                           11 (0%) worst case
+                           12 (0%) worst case
                Stack used: 2 locations
                Stack size: 31
 
@@ -24,25 +24,25 @@ CCS PCH C Compiler, Version 5.012, 41559               19-mar-17 22:12
 .................... /////////////////////////////////////////////////////////////////////////// 
 .................... #device PIC18F4620 
 *
-00054:  MOVF   0A,W
+00054:  MOVF   0B,W
 00056:  CLRF   01
-00058:  SUBWF  09,W
+00058:  SUBWF  0A,W
 0005A:  BC    0062
-0005C:  MOVFF  09,00
+0005C:  MOVFF  0A,00
 00060:  BRA    007A
 00062:  CLRF   00
 00064:  MOVLW  08
-00066:  MOVWF  0B
-00068:  RLCF   09,F
+00066:  MOVWF  0C
+00068:  RLCF   0A,F
 0006A:  RLCF   00,F
-0006C:  MOVF   0A,W
+0006C:  MOVF   0B,W
 0006E:  SUBWF  00,W
 00070:  BTFSC  FD8.0
 00072:  MOVWF  00
 00074:  RLCF   01,F
-00076:  DECFSZ 0B,F
+00076:  DECFSZ 0C,F
 00078:  BRA    0068
-0007A:  GOTO   0102 (RETURN)
+0007A:  GOTO   0124 (RETURN)
 ....................  
 .................... #list 
 ....................  
@@ -51,7 +51,7 @@ CCS PCH C Compiler, Version 5.012, 41559               19-mar-17 22:12
 .................... #use delay(clock=32000000) 
 *
 00004:  CLRF   FEA
-00006:  MOVLW  0B
+00006:  MOVLW  0C
 00008:  MOVWF  FE9
 0000A:  MOVF   FEF,W
 0000C:  BZ    0028
@@ -96,96 +96,118 @@ CCS PCH C Compiler, Version 5.012, 41559               19-mar-17 22:12
 ....................    set_tris_d(0b11111111); //habilito port como input 
 0009C:  MOVWF  F95
 ....................    int16 resultado=0; 
+....................    int8 operacion=0; 
 ....................    int8 operando1=0,operando2=0; 
 0009E:  CLRF   06
 000A0:  CLRF   05
 000A2:  CLRF   07
 000A4:  CLRF   08
+000A6:  CLRF   09
 ....................    setup_oscillator(OSC_32MHZ); 
-000A6:  MOVLW  70
-000A8:  MOVWF  FD3
-000AA:  MOVLW  40
-000AC:  MOVWF  F9B
-000AE:  MOVF   FD3,W
+000A8:  MOVLW  70
+000AA:  MOVWF  FD3
+000AC:  MOVLW  40
+000AE:  MOVWF  F9B
+000B0:  MOVF   FD3,W
 ....................     
 ....................    while(True){ 
 ....................    operando1=input_c(); 
-000B0:  SETF   F94
-000B2:  MOVFF  F82,07
+000B2:  SETF   F94
+000B4:  MOVFF  F82,08
 ....................    operando2=input_d(); 
-000B6:  SETF   F95
-000B8:  MOVFF  F83,08
+000B8:  SETF   F95
+000BA:  MOVFF  F83,09
+....................    operacion=input(PIN_B3); 
+000BE:  BSF    F93.3
+000C0:  CLRF   07
+000C2:  BTFSC  F81.3
+000C4:  INCF   07,F
+....................    operacion=input(PIN_B4); 
+000C6:  BSF    F93.4
+000C8:  CLRF   07
+000CA:  BTFSC  F81.4
+000CC:  INCF   07,F
+....................    operacion=input(PIN_B5); 
+000CE:  BSF    F93.5
+000D0:  CLRF   07
+000D2:  BTFSC  F81.5
+000D4:  INCF   07,F
+....................    operacion=input(PIN_B6); 
+000D6:  BSF    F93.6
+000D8:  CLRF   07
+000DA:  BTFSC  F81.6
+000DC:  INCF   07,F
 ....................     
 ....................    //operando2=input_d(); 
 ....................    if(input(PIN_B3) == 1){ 
-000BC:  BSF    F93.3
-000BE:  BTFSS  F81.3
-000C0:  BRA    00CA
+000DE:  BSF    F93.3
+000E0:  BTFSS  F81.3
+000E2:  BRA    00EC
 ....................    resultado = operando1 + operando2; 
-000C2:  MOVF   08,W
-000C4:  ADDWF  07,W
-000C6:  MOVWF  05
-000C8:  CLRF   06
+000E4:  MOVF   09,W
+000E6:  ADDWF  08,W
+000E8:  MOVWF  05
+000EA:  CLRF   06
 ....................        
 ....................    } 
 ....................    if(input(PIN_B4) == 1) 
-000CA:  BSF    F93.4
-000CC:  BTFSS  F81.4
-000CE:  BRA    00D8
+000EC:  BSF    F93.4
+000EE:  BTFSS  F81.4
+000F0:  BRA    00FA
 ....................    { 
 ....................    resultado = operando1 - operando2; 
-000D0:  MOVF   08,W
-000D2:  SUBWF  07,W
-000D4:  MOVWF  05
-000D6:  CLRF   06
+000F2:  MOVF   09,W
+000F4:  SUBWF  08,W
+000F6:  MOVWF  05
+000F8:  CLRF   06
 ....................    } 
 ....................    if(input(PIN_B5) == 1) 
-000D8:  BSF    F93.5
-000DA:  BTFSS  F81.5
-000DC:  BRA    00E8
+000FA:  BSF    F93.5
+000FC:  BTFSS  F81.5
+000FE:  BRA    010A
 ....................    { 
 ....................    resultado = operando1 * operando2; 
-000DE:  MOVF   07,W
-000E0:  MULWF  08
-000E2:  MOVF   FF3,W
-000E4:  CLRF   06
-000E6:  MOVWF  05
+00100:  MOVF   08,W
+00102:  MULWF  09
+00104:  MOVF   FF3,W
+00106:  CLRF   06
+00108:  MOVWF  05
 ....................    } 
 ....................    if(input(PIN_B6) == 1) 
-000E8:  BSF    F93.6
-000EA:  BTFSS  F81.6
-000EC:  BRA    0108
+0010A:  BSF    F93.6
+0010C:  BTFSS  F81.6
+0010E:  BRA    012A
 ....................    { 
 ....................    if(input_d()==0) 
-000EE:  SETF   F95
-000F0:  MOVF   F83,F
-000F2:  BNZ   00F8
+00110:  SETF   F95
+00112:  MOVF   F83,F
+00114:  BNZ   011A
 ....................    { 
 ....................    error(); 
-000F4:  BRA    002C
+00116:  BRA    002C
 ....................    break; 
-000F6:  BRA    010C
+00118:  BRA    012E
 ....................    } 
 ....................    resultado = operando1 / operando2; 
-000F8:  MOVFF  07,09
-000FC:  MOVFF  08,0A
-00100:  BRA    0054
-00102:  CLRF   06
-00104:  MOVFF  01,05
+0011A:  MOVFF  08,0A
+0011E:  MOVFF  09,0B
+00122:  BRA    0054
+00124:  CLRF   06
+00126:  MOVFF  01,05
 ....................    } 
 ....................    operando1=0; 
-00108:  CLRF   07
-0010A:  BRA    00B0
+0012A:  CLRF   08
+0012C:  BRA    00B2
 ....................    } 
 .................... }    
 .................... void error() 
-0010C:  SLEEP 
+0012E:  SLEEP 
 .................... { 
 ....................    int i; 
 ....................    for(i=0;i<5;i++) 
 *
-0002C:  CLRF   09
-0002E:  MOVF   09,W
+0002C:  CLRF   0A
+0002E:  MOVF   0A,W
 00030:  SUBLW  04
 00032:  BNC   0050
 ....................    { 
@@ -195,19 +217,19 @@ CCS PCH C Compiler, Version 5.012, 41559               19-mar-17 22:12
 00038:  MOVWF  F8A
 ....................    delay_ms(retardo); 
 0003A:  MOVLW  02
-0003C:  MOVWF  0A
+0003C:  MOVWF  0B
 0003E:  MOVLW  FA
-00040:  MOVWF  0B
+00040:  MOVWF  0C
 00042:  BRA    0004
-00044:  DECFSZ 0A,F
+00044:  DECFSZ 0B,F
 00046:  BRA    003E
 ....................    output_b(0b00000000); 
 00048:  CLRF   F93
 0004A:  CLRF   F8A
-0004C:  INCF   09,F
+0004C:  INCF   0A,F
 0004E:  BRA    002E
 ....................    } 
-00050:  GOTO   010C (RETURN)
+00050:  GOTO   012E (RETURN)
 .................... } 
 
 Configuration Fuses:

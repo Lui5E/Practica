@@ -19,10 +19,6 @@ void main (void){
    while(True){
    operando1=input_c();
    operando2=input_d();
-   operacion=input(PIN_B3);
-   operacion=input(PIN_B4);
-   operacion=input(PIN_B5);
-   operacion=input(PIN_B6);
    
    //operando2=input_d();
    if(input(PIN_B3) == 1){

@@ -1,5 +1,5 @@
 ÀÄCalculadora_8bits
-   ÀÄmain  0/144  Ram=1
+   ÀÄmain  0/178  Ram=1
       ÃÄ@cinit1  (Inline)  Ram=0
       ÃÄerror  0/40  Ram=2
       ³  ÀÄ@delay_ms1  0/40  Ram=1
