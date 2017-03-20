@@ -25,19 +25,19 @@ void main (void){
    operacion=input(PIN_B6);
    
    //operando2=input_d();
-   if(operacion == 8){
+   if(input(PIN_B3) == 1){
    resultado = operando1 + operando2;
       
    }
-   if(operacion == 16)
+   if(input(PIN_B4) == 1)
    {
    resultado = operando1 - operando2;
    }
-   if(operacion == 32)
+   if(input(PIN_B5) == 1)
    {
    resultado = operando1 * operando2;
    }
-   if(operacion == 64)
+   if(input(PIN_B6) == 1)
    {
    if(input_d()==0)
    {
