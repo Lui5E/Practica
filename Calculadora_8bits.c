@@ -37,8 +37,12 @@ void main (void){
    
    //operando2=input_d();
 <<<<<<< HEAD
+<<<<<<< HEAD
    if(input(PIN_B3) == 1)
    {
+=======
+   if(input(PIN_B3) == 1){
+>>>>>>> parent of 6964812... operacion if
 =======
    if(input(PIN_B3) == 1){
 >>>>>>> parent of 6964812... operacion if
