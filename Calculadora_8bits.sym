@@ -4,33 +4,32 @@
 002     @SCRATCH
 003     @SCRATCH
 005-006 main.resultado
-007     main.operacion
-008     main.operando1
-009     main.operando2
+007     main.operando1
+008     main.operando2
+009     @DIV88.P1
+009     error.i
+009     main.@SCRATCH1
 00A     @DIV88.P1
-00A     error.i
-00A     main.@SCRATCH1
-00B     @DIV88.P1
-00B     error.@SCRATCH1
-00C     @delay_ms1.P1
-00C     @DIV88.@SCRATCH1
+00A     error.@SCRATCH1
+00B     @delay_ms1.P1
+00B     @DIV88.@SCRATCH1
 F83     PSP_DATA
 FB4.6   C1OUT
 FB4.7   C2OUT
 FBB     CCP_2
 FBB     CCP_2_LOW
 FBC     CCP_2_HIGH
-FBE     CCP_1
 FBE     CCP_1_LOW
+FBE     CCP_1
 FBF     CCP_1_HIGH
 FE1-FE2 @READ_PACKED_MEMORY.P1
 FE1-FE2 @WRITE_PACKED_MEMORY.P2
-FE9-FEA @WRITE_PACKED_MEMORY.P1
-FE9-FEA @READ_PACKED_MEMORY.P2
-FE9-FEA @READ_PROGRAM_MEMORY.P3
-FE9-FEA @WRITE_PROGRAM_MEMORY.P4
-FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
-FF6-FF8 @READ_PROGRAM_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P3
+FE9-FEA @READ_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
 
 ROM Allocation:
 000004  @delay_ms1
@@ -44,10 +43,17 @@ Project Directory:
     C:\Users\lazaax\Documents\GitHub\Practica\
 
 Project Files:
+<<<<<<< HEAD
     Calculadora_8bits.c                                     [20-mar-17 22:59  CRC=903D72B2]
     ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep-13 16:34  CRC=044A57BA]
 
 Source signature=98D22226
+=======
+    Calculadora_8bits.c                                     [19-mar-17 22:12  CRC=C4671410]
+    ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep-13 16:34  CRC=044A57BA]
+
+Source signature=CCFBC384
+>>>>>>> parent of d95020c... se agrego variable operacion
 
 Units:
     Calculadora_8bits (main)

@@ -1,5 +1,9 @@
 ÀÄCalculadora_8bits
+<<<<<<< HEAD
    ÀÄmain  0/182  Ram=1
+=======
+   ÀÄmain  0/144  Ram=1
+>>>>>>> parent of d95020c... se agrego variable operacion
       ÃÄ@cinit1  (Inline)  Ram=0
       ÃÄerror  0/84  Ram=2
       ³  ÃÄ@delay_ms1  0/38  Ram=1
