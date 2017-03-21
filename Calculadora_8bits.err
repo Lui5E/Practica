@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 *** Error 173 "Calculadora_8bits.c" Line 62(6,11): Functions may not be nested
 *** Error 79 "Calculadora_8bits.c" Line 76(1,2): Expect }
       2 Errors,  0 Warnings.
 Build Failed.
+=======
+      Memory usage:   ROM=0%      RAM=0% - 0%
+      0 Errors,  0 Warnings.
+Build Successful.
+>>>>>>> parent of 6964812... operacion if

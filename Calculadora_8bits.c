@@ -36,8 +36,12 @@ void main (void){
    operacion=input(PIN_B6);
    
    //operando2=input_d();
+<<<<<<< HEAD
    if(input(PIN_B3) == 1)
    {
+=======
+   if(input(PIN_B3) == 1){
+>>>>>>> parent of 6964812... operacion if
    resultado = operando1 + operando2;
    }
    if(input(PIN_B4) == 1)
