@@ -34,20 +34,20 @@ FF6-FF8 @READ_PROGRAM_MEMORY.P2
 
 ROM Allocation:
 000004  @delay_ms1
-00002C  error
-000054  @DIV88
-00007E  main
-00007E  @cinit1
-000098  @cinit2
+00002A  error
+00007E  @DIV88
+0000A8  main
+0000A8  @cinit1
+0000C2  @cinit2
 
 Project Directory:
     C:\Users\lazaax\Documents\GitHub\Practica\
 
 Project Files:
-    Calculadora_8bits.c                                     [19-mar-17 22:32  CRC=D180260E]
+    Calculadora_8bits.c                                     [20-mar-17 22:59  CRC=903D72B2]
     ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep-13 16:34  CRC=044A57BA]
 
-Source signature=DA14D582
+Source signature=98D22226
 
 Units:
     Calculadora_8bits (main)
