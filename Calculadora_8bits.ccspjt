@@ -13,7 +13,15 @@ Type=4
 1=Calculadora_8bits.c
 [Opened Files]
 1=Calculadora_8bits.c
-2=
+2=..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h
+3=
+[Calculadora_8bits.c]
+Type=4
+[mru-list]
+1=Calculadora_8bits.c
+[Opened Files]
+1=Calculadora_8bits.c
+2=..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h
 3=
 [Units]
 Count=1

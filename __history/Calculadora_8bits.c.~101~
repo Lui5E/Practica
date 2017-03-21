@@ -58,5 +58,4 @@ void error()
    delay_ms(retardo);
    output_b(0b00000000);
    }
-}
 
