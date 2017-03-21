@@ -19,6 +19,7 @@ void main (void){
    while(True){
    operando1=input_c();
    operando2=input_d();
+<<<<<<< HEAD
    //output_an(0b00000000);
    /*si el pushboton es precionado, esto tendra un valor decimal o binario
    como se quiera representar y cada valor tendra su operacion
@@ -30,17 +31,26 @@ void main (void){
    operacion=input(PIN_B6); // guarda valor 0b01000000;/
    if(operacion == 8)
    {
+=======
+   operacion=input(PIN_B3);
+   operacion=input(PIN_B4);
+   operacion=input(PIN_B5);
+   operacion=input(PIN_B6);
+   
+   //operando2=input_d();
+   if(input(PIN_B3) == 1){
+>>>>>>> parent of 6964812... operacion if
    resultado = operando1 + operando2;
    }
-   if(operacion == 16)
+   if(input(PIN_B4) == 1)
    {
    resultado = operando1 - operando2;
    }
-   if(operacion == 32)
+   if(input(PIN_B5) == 1)
    {
    resultado = operando1 * operando2;
    }
-   if(operacion == 64)
+   if(input(PIN_B6) == 1)
    {
    if(input_d()==0)
    {
