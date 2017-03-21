@@ -24,10 +24,10 @@ void main (void){
    como se quiera representar y cada valor tendra su operacion
    8 es +, 16 es -, 32 es * y 64 es /
    */
-   operacion=input(PIN_B3); // guarda valor 0b00001000;+
-   operacion=input(PIN_B4); // guarda valor 0b00010000;-
-   operacion=input(PIN_B5); // guarda valor 0b00100000;*
-   operacion=input(PIN_B6); // guarda valor 0b01000000;/
+   operacion=input(PIN_A4); // guarda valor 0b00001000;+
+   operacion=input(PIN_B5); // guarda valor 0b00010000;-
+   operacion=input(PIN_B6); // guarda valor 0b00100000;*
+   operacion=input(PIN_B7); // guarda valor 0b01000000;/
    if(operacion == 8)
    {
    resultado = operando1 + operando2;
