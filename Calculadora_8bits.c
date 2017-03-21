@@ -65,6 +65,7 @@ void main (void){
    }
    resultado = operando1 / operando2;
    }
+   operando1=0;
    }
 }   
 void error()
