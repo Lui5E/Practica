@@ -1,0 +1,273 @@
+CCS PCH C Compiler, Version 5.012, 41559               23-mar-17 19:58
+
+               Filename:   C:\Users\lazaax\Documents\GitHub\Practica\Nueva carpeta\Calculadora_8bits.lst
+
+               ROM used:   348 bytes (1%)
+                           Largest free fragment is 65188
+               RAM used:   5 (0%) at main() level
+                           12 (0%) worst case
+               Stack used: 2 locations
+               Stack size: 31
+
+*
+00000:  GOTO   00A0
+.................... #include <18F4620.h> 
+.................... ///////////// Standard Header file for the PIC18F4620 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2013 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4620 
+*
+00076:  MOVF   0B,W
+00078:  CLRF   01
+0007A:  SUBWF  0A,W
+0007C:  BC    0084
+0007E:  MOVFF  0A,00
+00082:  BRA    009C
+00084:  CLRF   00
+00086:  MOVLW  08
+00088:  MOVWF  0C
+0008A:  RLCF   0A,F
+0008C:  RLCF   00,F
+0008E:  MOVF   0B,W
+00090:  SUBWF  00,W
+00092:  BTFSC  FD8.0
+00094:  MOVWF  00
+00096:  RLCF   01,F
+00098:  DECFSZ 0C,F
+0009A:  BRA    008A
+0009C:  GOTO   0150 (RETURN)
+....................  
+.................... #list 
+....................  
+.................... #fuses INTRC_IO, NOFCMEN, NOIESO, PUT, NOBROWNOUT, NOWDT 
+.................... #fuses NOPBADEN, NOMCLR, STVREN, NOLVP, NODEBUG 
+.................... #use delay(clock=32000000) 
+*
+00004:  CLRF   FEA
+00006:  MOVLW  0C
+00008:  MOVWF  FE9
+0000A:  MOVF   FEF,W
+0000C:  BZ    0028
+0000E:  MOVLW  0A
+00010:  MOVWF  01
+00012:  CLRF   00
+00014:  DECFSZ 00,F
+00016:  BRA    0014
+00018:  DECFSZ 01,F
+0001A:  BRA    0012
+0001C:  MOVLW  5F
+0001E:  MOVWF  00
+00020:  DECFSZ 00,F
+00022:  BRA    0020
+00024:  DECFSZ FEF,F
+00026:  BRA    000E
+00028:  GOTO   0056 (RETURN)
+.................... #use standard_io(b) 
+.................... #use fixed_io(a_outputs=PIN_A0, PIN_A1) 
+.................... #use standard_io(a) 
+.................... #define retardo 500 
+....................  
+....................  
+.................... void error(); 
+....................  
+.................... void main (void){ 
+*
+000A0:  CLRF   FF8
+000A2:  BCF    FD0.7
+000A4:  MOVLW  70
+000A6:  MOVWF  FD3
+000A8:  MOVLW  40
+000AA:  MOVWF  F9B
+000AC:  MOVF   FD3,W
+000AE:  MOVF   FC1,W
+000B0:  ANDLW  C0
+000B2:  IORLW  0F
+000B4:  MOVWF  FC1
+000B6:  MOVLW  07
+000B8:  MOVWF  FB4
+....................    set_tris_c(0b11111111); //habilito port como input 
+000BA:  MOVLW  FF
+000BC:  MOVWF  F94
+....................    set_tris_d(0b11111111); //habilito port como input 
+000BE:  MOVWF  F95
+....................    int16 resultado=0; 
+000C0:  CLRF   06
+000C2:  CLRF   05
+....................    SETUP_ADC_PORTS(NO_ANALOGS); 
+000C4:  MOVF   FC1,W
+000C6:  ANDLW  C0
+000C8:  IORLW  0F
+000CA:  MOVWF  FC1
+....................    int8 operacion=0; 
+....................    int8 operando1=0,operando2=0; 
+000CC:  CLRF   07
+000CE:  CLRF   08
+000D0:  CLRF   09
+....................    setup_oscillator(OSC_32MHZ); 
+000D2:  MOVLW  70
+000D4:  MOVWF  FD3
+000D6:  MOVLW  40
+000D8:  MOVWF  F9B
+000DA:  MOVF   FD3,W
+....................    while(True){ 
+....................    error(); 
+000DC:  RCALL  002C
+....................    operando1=input_c(); 
+000DE:  SETF   F94
+000E0:  MOVFF  F82,08
+....................    operando2=input_d(); 
+000E4:  SETF   F95
+000E6:  MOVFF  F83,09
+....................    operacion=input(PIN_B3); 
+000EA:  BSF    F93.3
+000EC:  CLRF   07
+000EE:  BTFSC  F81.3
+000F0:  INCF   07,F
+....................    operacion=input(PIN_B4); 
+000F2:  BSF    F93.4
+000F4:  CLRF   07
+000F6:  BTFSC  F81.4
+000F8:  INCF   07,F
+....................    operacion=input(PIN_B5); 
+000FA:  BSF    F93.5
+000FC:  CLRF   07
+000FE:  BTFSC  F81.5
+00100:  INCF   07,F
+....................    operacion=input(PIN_B6); 
+00102:  BSF    F93.6
+00104:  CLRF   07
+00106:  BTFSC  F81.6
+00108:  INCF   07,F
+....................    //operando2=input_d(); 
+....................    if(operacion == 8){ 
+0010A:  MOVF   07,W
+0010C:  SUBLW  08
+0010E:  BNZ   0118
+....................    resultado = operando1 + operando2; 
+00110:  MOVF   09,W
+00112:  ADDWF  08,W
+00114:  MOVWF  05
+00116:  CLRF   06
+....................        
+....................    } 
+....................    if(input(PIN_B4) == 1) 
+00118:  BSF    F93.4
+0011A:  BTFSS  F81.4
+0011C:  BRA    0126
+....................    { 
+....................    resultado = operando1 - operando2; 
+0011E:  MOVF   09,W
+00120:  SUBWF  08,W
+00122:  MOVWF  05
+00124:  CLRF   06
+....................    } 
+....................    if(input(PIN_B5) == 1) 
+00126:  BSF    F93.5
+00128:  BTFSS  F81.5
+0012A:  BRA    0136
+....................    { 
+....................    resultado = operando1 * operando2; 
+0012C:  MOVF   08,W
+0012E:  MULWF  09
+00130:  MOVF   FF3,W
+00132:  CLRF   06
+00134:  MOVWF  05
+....................    } 
+....................    if(input(PIN_B6) == 1) 
+00136:  BSF    F93.6
+00138:  BTFSS  F81.6
+0013A:  BRA    0156
+....................    { 
+....................    if(input_d()==0) 
+0013C:  SETF   F95
+0013E:  MOVF   F83,F
+00140:  BNZ   0146
+....................    { 
+....................    error(); 
+00142:  RCALL  002C
+....................    break; 
+00144:  BRA    015A
+....................    } 
+....................    resultado = operando1 / operando2; 
+00146:  MOVFF  08,0A
+0014A:  MOVFF  09,0B
+0014E:  BRA    0076
+00150:  CLRF   06
+00152:  MOVFF  01,05
+....................    } 
+....................    operando1=0; 
+00156:  CLRF   08
+00158:  BRA    00DC
+....................    } 
+.................... }    
+.................... void error() 
+0015A:  SLEEP 
+.................... { 
+....................    int i; 
+....................    for(i=0;i<5;i++) 
+*
+0002C:  CLRF   0A
+0002E:  MOVF   0A,W
+00030:  SUBLW  04
+00032:  BNC   0074
+....................    { 
+....................    output_e(0b00000111); 
+00034:  BCF    F96.0
+00036:  BCF    F96.1
+00038:  BCF    F96.2
+0003A:  BCF    F96.3
+0003C:  MOVLW  07
+0003E:  MOVWF  F8D
+....................    output_a(0b00111111); 
+00040:  CLRF   F92
+00042:  MOVLW  3F
+00044:  MOVWF  F89
+....................    output_b(0b00001111); 
+00046:  CLRF   F93
+00048:  MOVLW  0F
+0004A:  MOVWF  F8A
+....................    delay_ms(retardo); 
+0004C:  MOVLW  02
+0004E:  MOVWF  0B
+00050:  MOVLW  FA
+00052:  MOVWF  0C
+00054:  BRA    0004
+00056:  DECFSZ 0B,F
+00058:  BRA    0050
+....................    output_b(0b00000000); 
+0005A:  CLRF   F93
+0005C:  CLRF   F8A
+....................    output_e(0b00000000); 
+0005E:  BCF    F96.0
+00060:  BCF    F96.1
+00062:  BCF    F96.2
+00064:  BCF    F96.3
+00066:  CLRF   F8D
+....................    output_a(0b00000000); 
+00068:  CLRF   F92
+0006A:  CLRF   F89
+....................    output_b(0b00000000); 
+0006C:  CLRF   F93
+0006E:  CLRF   F8A
+00070:  INCF   0A,F
+00072:  BRA    002E
+....................    } 
+00074:  RETURN 0
+.................... } 
+....................  
+
+Configuration Fuses:
+   Word  1: 0800   INTRC_IO NOFCMEN NOIESO
+   Word  2: 1E18   PUT NOBROWNOUT BORV21 NOWDT WDT32768
+   Word  3: 0500   CCP2C1 NOPBADEN LPT1OSC NOMCLR
+   Word  4: 0081   STVREN NOLVP NOXINST NODEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB

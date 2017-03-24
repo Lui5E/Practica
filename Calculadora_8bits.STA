@@ -1,47 +1,48 @@
 
-ROM used:   304/65536 (0%)
-            304/65536 (0%) including unused fragments
+ROM used:   474/65536 (1%)
+            474/65536 (1%) including unused fragments
 
-            0.3 Average locations per line
-            8.9 Average locations per statement
+            0.5 Average locations per line
+            13.5 Average locations per statement
 
-RAM used:   5/3968 (0%) at main() level
-            12/3968 (0%) worst case
+RAM used:   6/3968 (0%) at main() level
+            15/3968 (0%) worst case
 
 Stack used: 2 worst case (2 in main + 0 for interrupts)
 Stack size: 31
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   63    34 100  Calculadora_8bits.c
+   62    35 100  Calculadora_8bits.c
   834     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h
 ----- -----
-  897    34 Total
+  896    35 Total
 
 Page ROM  %  RAM   Vol Diff  Functions:
 ---- --- --- ---   --- ----  ----------
-0     40   7    1             @delay_ms1
-0    178  29    1   905  6.4  main
-0     42   7    3             @DIV88
-0     40   7    2   134  3.0  error
+0     40   4    1             @delay_ms1
+0    254  27    2   743  6.9  main
+0     32   3    5             @MUL1616
+0     68   7    5   250  3.2  @DIV1616
+0     76   8    2   250  3.2  error
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               2
-    Statements              34
-    Comments                152
-    Volume (V)              1163
-    Difficulty (D)          9.3
-    Effort to implement (E) 10793
-    Time to implement (T)   10 minutes
+    Functions               3
+    Statements              35
+    Comments                149
+    Volume (V)              1571
+    Difficulty (D)          13.0
+    Effort to implement (E) 20350
+    Time to implement (T)   19 minutes
     Est Delivered Bugs (B)  0
-    Cyclomatic Complexity   6
-    Maintainability (MI)    132
+    Cyclomatic Complexity   7
+    Maintainability (MI)    48
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
-00004-0FFFE   300  65232  
+00004-0FFFE   470  65062  
 
 
 

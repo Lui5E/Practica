@@ -10,10 +10,12 @@
 void error();
 
 void main (void){
-   SETUP_ADC_PORTS(NO_ANALOGS);
-   setup_oscillator(OSC_32MHZ);
+  // set_tris_c(0b11111111); //habilito port como input
+   //set_tris_d(0b11111111); //habilito port como input
    int16 resultado=0;
-   int16 operando1=0,operando2=0;
+   SETUP_ADC_PORTS(NO_ANALOGS);
+   int8 operando1=0,operando2=0;
+   setup_oscillator(OSC_32MHZ);
    while(True){
    operando1=input_c();
    operando2=input_d();
@@ -34,14 +36,11 @@ void main (void){
    if(input_d()==0)
    {
    error();
+   //break;
    }else
    resultado = operando1 / operando2;
    }
-   output_a(resultado);
-   output_b(resultado>>6);
-   output_e(resultado>>10);
    }
-   
 }   
 void error()
 {
