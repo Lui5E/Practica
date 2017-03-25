@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.012, 41559               25-mar-17 00:39
+CCS PCH C Compiler, Version 5.012, 41559               25-mar-17 00:54
 
                Filename:   C:\Users\lazaax\Documents\GitHub\Practica\Calculadora_8bits.lst
 
@@ -99,7 +99,6 @@ CCS PCH C Compiler, Version 5.012, 41559               25-mar-17 00:39
 .................... #use standard_io(b) 
 .................... #use standard_io(a) 
 .................... #define retardo 500 
-....................  
 ....................  
 .................... void error(); 
 ....................  

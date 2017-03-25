@@ -6,7 +6,6 @@
 #use standard_io(a)
 #define retardo 500
 
-
 void error();
 
 void main (void){
