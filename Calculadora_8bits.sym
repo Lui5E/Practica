@@ -3,10 +3,10 @@
 001     _RETURN_
 002     @SCRATCH
 003     @SCRATCH
-005-006 main.resultado
-007.0   main.valError
-008-009 main.operando1
-00A-00B main.operando2
+005.0   main.valError
+006-007 main.operando1
+008-009 main.operando2
+00A-00B main.resultado
 00C     main.operacion
 00D     error.i
 00D-00E @DIV1616.P1
@@ -41,19 +41,19 @@ ROM Allocation:
 000004  @MUL1616
 000024  @delay_ms1
 00004A  error
-0000B8  @DIV1616
-0000FC  main
-0000FC  @cinit1
-000116  @cinit2
+0000A0  @DIV1616
+0000E4  main
+0000E4  @cinit1
+0000FE  @cinit2
 
 Project Directory:
     C:\Users\lazaax\Documents\GitHub\Practica\
 
 Project Files:
-    Calculadora_8bits.c                                     [25-mar-17 00:54  CRC=DDE400B4]
+    Calculadora_8bits.c                                     [25-mar-17 01:11  CRC=15143E34]
     ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep-13 16:34  CRC=044A57BA]
 
-Source signature=E678B028
+Source signature=1DA8EDA8
 
 Units:
     Calculadora_8bits (main)
