@@ -1,16 +1,16 @@
-CCS PCH C Compiler, Version 5.012, 41559               23-mar-17 20:47
+CCS PCH C Compiler, Version 5.012, 41559               24-mar-17 18:22
 
                Filename:   C:\Users\lazaax\Documents\GitHub\Practica\Calculadora_8bits.lst
 
-               ROM used:   474 bytes (1%)
-                           Largest free fragment is 65062
+               ROM used:   566 bytes (1%)
+                           Largest free fragment is 64970
                RAM used:   6 (0%) at main() level
-                           15 (0%) worst case
+                           17 (0%) worst case
                Stack used: 2 locations
                Stack size: 31
 
 *
-00000:  GOTO   00DC
+00000:  GOTO   00FC
 .................... #include <18F4620.h> 
 .................... ///////////// Standard Header file for the PIC18F4620 device //////////////// 
 .................... /////////////////////////////////////////////////////////////////////////// 
@@ -23,53 +23,53 @@ CCS PCH C Compiler, Version 5.012, 41559               23-mar-17 20:47
 .................... //// form are not restricted in any way.                               //// 
 .................... /////////////////////////////////////////////////////////////////////////// 
 .................... #device PIC18F4620 
-00004:  MOVF   0B,W
-00006:  MULWF  0D
+00004:  MOVF   0D,W
+00006:  MULWF  0F
 00008:  MOVFF  FF3,01
 0000C:  MOVFF  FF4,00
-00010:  MULWF  0E
+00010:  MULWF  10
 00012:  MOVF   FF3,W
 00014:  ADDWF  00,F
-00016:  MOVF   0C,W
-00018:  MULWF  0D
+00016:  MOVF   0E,W
+00018:  MULWF  0F
 0001A:  MOVF   FF3,W
 0001C:  ADDWFC 00,W
 0001E:  MOVWF  02
-00020:  GOTO   0160 (RETURN)
+00020:  GOTO   01A8 (RETURN)
 *
-00098:  CLRF   01
-0009A:  CLRF   02
-0009C:  CLRF   00
-0009E:  CLRF   03
-000A0:  MOVF   0E,W
-000A2:  BNZ   00A8
-000A4:  MOVF   0D,W
-000A6:  BZ    00D8
-000A8:  MOVLW  10
-000AA:  MOVWF  0F
-000AC:  BCF    FD8.0
-000AE:  RLCF   0B,F
-000B0:  RLCF   0C,F
-000B2:  RLCF   00,F
-000B4:  RLCF   03,F
-000B6:  MOVF   0E,W
-000B8:  SUBWF  03,W
-000BA:  BNZ   00C0
-000BC:  MOVF   0D,W
-000BE:  SUBWF  00,W
-000C0:  BNC   00D0
-000C2:  MOVF   0D,W
-000C4:  SUBWF  00,F
-000C6:  BTFSS  FD8.0
-000C8:  DECF   03,F
-000CA:  MOVF   0E,W
-000CC:  SUBWF  03,F
-000CE:  BSF    FD8.0
-000D0:  RLCF   01,F
-000D2:  RLCF   02,F
-000D4:  DECFSZ 0F,F
-000D6:  BRA    00AC
-000D8:  GOTO   018A (RETURN)
+000B8:  CLRF   01
+000BA:  CLRF   02
+000BC:  CLRF   00
+000BE:  CLRF   03
+000C0:  MOVF   10,W
+000C2:  BNZ   00C8
+000C4:  MOVF   0F,W
+000C6:  BZ    00F8
+000C8:  MOVLW  10
+000CA:  MOVWF  11
+000CC:  BCF    FD8.0
+000CE:  RLCF   0D,F
+000D0:  RLCF   0E,F
+000D2:  RLCF   00,F
+000D4:  RLCF   03,F
+000D6:  MOVF   10,W
+000D8:  SUBWF  03,W
+000DA:  BNZ   00E0
+000DC:  MOVF   0F,W
+000DE:  SUBWF  00,W
+000E0:  BNC   00F0
+000E2:  MOVF   0F,W
+000E4:  SUBWF  00,F
+000E6:  BTFSS  FD8.0
+000E8:  DECF   03,F
+000EA:  MOVF   10,W
+000EC:  SUBWF  03,F
+000EE:  BSF    FD8.0
+000F0:  RLCF   01,F
+000F2:  RLCF   02,F
+000F4:  DECFSZ 11,F
+000F6:  BRA    00CC
+000F8:  GOTO   01E4 (RETURN)
 ....................  
 .................... #list 
 ....................  
@@ -78,7 +78,7 @@ CCS PCH C Compiler, Version 5.012, 41559               23-mar-17 20:47
 .................... #use delay(clock=32000000) 
 *
 00024:  CLRF   FEA
-00026:  MOVLW  0D
+00026:  MOVLW  0F
 00028:  MOVWF  FE9
 0002A:  MOVF   FEF,W
 0002C:  BZ    0048
@@ -95,7 +95,7 @@ CCS PCH C Compiler, Version 5.012, 41559               23-mar-17 20:47
 00042:  BRA    0040
 00044:  DECFSZ FEF,F
 00046:  BRA    002E
-00048:  GOTO   0076 (RETURN)
+00048:  RETURN 0
 .................... #use standard_io(b) 
 .................... #use standard_io(a) 
 .................... #define retardo 500 
@@ -105,201 +105,267 @@ CCS PCH C Compiler, Version 5.012, 41559               23-mar-17 20:47
 ....................  
 .................... void main (void){ 
 *
-000DC:  CLRF   FF8
-000DE:  BCF    FD0.7
-000E0:  MOVLW  70
-000E2:  MOVWF  FD3
-000E4:  MOVLW  40
-000E6:  MOVWF  F9B
-000E8:  MOVF   FD3,W
-000EA:  MOVF   FC1,W
-000EC:  ANDLW  C0
-000EE:  IORLW  0F
-000F0:  MOVWF  FC1
-000F2:  MOVLW  07
-000F4:  MOVWF  FB4
+000FC:  CLRF   FF8
+000FE:  BCF    FD0.7
+00100:  MOVLW  70
+00102:  MOVWF  FD3
+00104:  MOVLW  40
+00106:  MOVWF  F9B
+00108:  MOVF   FD3,W
+0010A:  MOVF   FC1,W
+0010C:  ANDLW  C0
+0010E:  IORLW  0F
+00110:  MOVWF  FC1
+00112:  MOVLW  07
+00114:  MOVWF  FB4
 ....................    SETUP_ADC_PORTS(NO_ANALOGS); 
-000F6:  MOVF   FC1,W
-000F8:  ANDLW  C0
-000FA:  IORLW  0F
-000FC:  MOVWF  FC1
+00116:  MOVF   FC1,W
+00118:  ANDLW  C0
+0011A:  IORLW  0F
+0011C:  MOVWF  FC1
 ....................    setup_oscillator(OSC_32MHZ); 
-000FE:  MOVLW  70
-00100:  MOVWF  FD3
-00102:  MOVLW  40
-00104:  MOVWF  F9B
-00106:  MOVF   FD3,W
+0011E:  MOVLW  70
+00120:  MOVWF  FD3
+00122:  MOVLW  40
+00124:  MOVWF  F9B
+00126:  MOVF   FD3,W
 ....................    int16 resultado=0; 
+....................    int1 valError=0; 
 ....................    int16 operando1=0,operando2=0; 
-00108:  CLRF   06
-0010A:  CLRF   05
-0010C:  CLRF   08
-0010E:  CLRF   07
-00110:  CLRF   0A
-00112:  CLRF   09
+....................    int8 operacion=0; 
+00128:  CLRF   06
+0012A:  CLRF   05
+0012C:  BCF    07.0
+0012E:  CLRF   09
+00130:  CLRF   08
+00132:  CLRF   0B
+00134:  CLRF   0A
+00136:  CLRF   0C
 ....................    while(True){ 
+....................    valError=0; 
+00138:  BCF    07.0
 ....................    operando1=input_c(); 
-00114:  SETF   F94
-00116:  CLRF   08
-00118:  MOVFF  F82,07
+0013A:  SETF   F94
+0013C:  CLRF   09
+0013E:  MOVFF  F82,08
 ....................    operando2=input_d(); 
-0011C:  SETF   F95
-0011E:  CLRF   0A
-00120:  MOVFF  F83,09
-....................    if(input(PIN_B4) == 1){ 
-00124:  BSF    F93.4
-00126:  BTFSS  F81.4
-00128:  BRA    0136
+00142:  SETF   F95
+00144:  CLRF   0B
+00146:  MOVFF  F83,0A
+....................    operacion=input_b(); 
+0014A:  SETF   F93
+0014C:  MOVFF  F81,0C
+....................    if(input(PIN_B4) == 1 || operacion==1){ 
+00150:  BSF    F93.4
+00152:  BTFSC  F81.4
+00154:  BRA    015A
+00156:  DECFSZ 0C,W
+00158:  BRA    016C
 ....................    resultado = operando1 + operando2; 
-0012A:  MOVF   09,W
-0012C:  ADDWF  07,W
-0012E:  MOVWF  05
-00130:  MOVF   0A,W
-00132:  ADDWFC 08,W
-00134:  MOVWF  06
-....................        
+0015A:  MOVF   0A,W
+0015C:  ADDWF  08,W
+0015E:  MOVWF  05
+00160:  MOVF   0B,W
+00162:  ADDWFC 09,W
+00164:  MOVWF  06
+....................    operacion=1; 
+00166:  MOVLW  01
+00168:  MOVWF  0C
 ....................    } 
-....................    if(input(PIN_B5) == 1) 
-00136:  BSF    F93.5
-00138:  BTFSS  F81.5
-0013A:  BRA    0148
+0016A:  BRA    01EC
+....................    else if(input(PIN_B5) == 1 || operacion==2) 
+0016C:  BSF    F93.5
+0016E:  BTFSC  F81.5
+00170:  BRA    0178
+00172:  MOVF   0C,W
+00174:  SUBLW  02
+00176:  BNZ   018A
 ....................    { 
 ....................    resultado = operando1 - operando2; 
-0013C:  MOVF   09,W
-0013E:  SUBWF  07,W
-00140:  MOVWF  05
-00142:  MOVF   0A,W
-00144:  SUBWFB 08,W
-00146:  MOVWF  06
+00178:  MOVF   0A,W
+0017A:  SUBWF  08,W
+0017C:  MOVWF  05
+0017E:  MOVF   0B,W
+00180:  SUBWFB 09,W
+00182:  MOVWF  06
+....................    operacion=2; 
+00184:  MOVLW  02
+00186:  MOVWF  0C
 ....................    } 
-....................    if(input(PIN_B6) == 1) 
-00148:  BSF    F93.6
-0014A:  BTFSS  F81.6
-0014C:  BRA    0168
+00188:  BRA    01EC
+....................    else if(input(PIN_B6) == 1 || operacion==3) 
+0018A:  BSF    F93.6
+0018C:  BTFSC  F81.6
+0018E:  BRA    0196
+00190:  MOVF   0C,W
+00192:  SUBLW  03
+00194:  BNZ   01B6
 ....................    { 
 ....................    resultado = operando1 * operando2; 
-0014E:  MOVFF  08,0C
-00152:  MOVFF  07,0B
-00156:  MOVFF  0A,0E
-0015A:  MOVFF  09,0D
-0015E:  BRA    0004
-00160:  MOVFF  02,06
-00164:  MOVFF  01,05
+00196:  MOVFF  09,0E
+0019A:  MOVFF  08,0D
+0019E:  MOVFF  0B,10
+001A2:  MOVFF  0A,0F
+001A6:  BRA    0004
+001A8:  MOVFF  02,06
+001AC:  MOVFF  01,05
+....................    operacion=3; 
+001B0:  MOVLW  03
+001B2:  MOVWF  0C
 ....................    } 
-....................    if(input(PIN_B7) == 1) 
-00168:  BSF    F93.7
-0016A:  BTFSS  F81.7
-0016C:  BRA    0192
+001B4:  BRA    01EC
+....................    else if(input(PIN_B7) == 1|| operacion==4) 
+001B6:  BSF    F93.7
+001B8:  BTFSC  F81.7
+001BA:  BRA    01C2
+001BC:  MOVF   0C,W
+001BE:  SUBLW  04
+001C0:  BNZ   01EC
 ....................    { 
+....................    operacion=4; 
+001C2:  MOVLW  04
+001C4:  MOVWF  0C
 ....................    if(input_d()==0) 
-0016E:  SETF   F95
-00170:  MOVF   F83,F
-00172:  BNZ   0178
+001C6:  SETF   F95
+001C8:  MOVF   F83,F
+001CA:  BNZ   01D2
 ....................    { 
+....................    valError=1; 
+001CC:  BSF    07.0
 ....................    error(); 
-00174:  BRA    004C
+001CE:  BRA    004A
 ....................    }else 
-00176:  BRA    0192
+001D0:  BRA    01EC
 ....................    resultado = operando1 / operando2; 
-00178:  MOVFF  08,0C
-0017C:  MOVFF  07,0B
-00180:  MOVFF  0A,0E
-00184:  MOVFF  09,0D
-00188:  BRA    0098
-0018A:  MOVFF  02,06
-0018E:  MOVFF  01,05
+001D2:  MOVFF  09,0E
+001D6:  MOVFF  08,0D
+001DA:  MOVFF  0B,10
+001DE:  MOVFF  0A,0F
+001E2:  BRA    00B8
+001E4:  MOVFF  02,06
+001E8:  MOVFF  01,05
 ....................    } 
+....................    if(valError==0) 
+001EC:  BTFSC  07.0
+001EE:  BRA    0232
+....................    { 
 ....................    output_a(resultado); 
-00192:  CLRF   F92
-00194:  MOVFF  05,F89
+001F0:  CLRF   F92
+001F2:  MOVFF  05,F89
 ....................    output_b(resultado>>6); 
-00198:  RRCF   06,W
-0019A:  MOVWF  0C
-0019C:  RRCF   05,W
-0019E:  MOVWF  0B
-001A0:  RRCF   0C,F
-001A2:  RRCF   0B,F
-001A4:  RRCF   0C,F
-001A6:  RRCF   0B,F
-001A8:  RRCF   0C,F
-001AA:  RRCF   0B,F
-001AC:  RRCF   0C,F
-001AE:  RRCF   0B,F
-001B0:  RRCF   0C,F
-001B2:  RRCF   0B,F
-001B4:  MOVLW  03
-001B6:  ANDWF  0C,F
-001B8:  CLRF   F93
-001BA:  MOVFF  0B,F8A
+001F6:  RRCF   06,W
+001F8:  MOVWF  0E
+001FA:  RRCF   05,W
+001FC:  MOVWF  0D
+001FE:  RRCF   0E,F
+00200:  RRCF   0D,F
+00202:  RRCF   0E,F
+00204:  RRCF   0D,F
+00206:  RRCF   0E,F
+00208:  RRCF   0D,F
+0020A:  RRCF   0E,F
+0020C:  RRCF   0D,F
+0020E:  RRCF   0E,F
+00210:  RRCF   0D,F
+00212:  MOVLW  03
+00214:  ANDWF  0E,F
+00216:  CLRF   F93
+00218:  MOVFF  0D,F8A
 ....................    output_e(resultado>>10); 
-001BE:  CLRF   0C
-001C0:  RRCF   06,W
-001C2:  MOVWF  0B
-001C4:  RRCF   0B,F
-001C6:  MOVLW  3F
-001C8:  ANDWF  0B,F
-001CA:  BCF    F96.0
-001CC:  BCF    F96.1
-001CE:  BCF    F96.2
-001D0:  BCF    F96.3
-001D2:  MOVFF  0B,F8D
-001D6:  BRA    0114
+0021C:  RRCF   06,W
+0021E:  MOVWF  0D
+00220:  RRCF   0D,F
+00222:  MOVLW  3F
+00224:  ANDWF  0D,F
+00226:  BCF    F96.0
+00228:  BCF    F96.1
+0022A:  BCF    F96.2
+0022C:  BCF    F96.3
+0022E:  MOVFF  0D,F8D
 ....................    } 
-....................     
+00232:  BRA    0138
+....................    }  
 .................... }    
 .................... void error() 
-001D8:  SLEEP 
+00234:  SLEEP 
 .................... { 
 ....................    int i; 
 ....................    for(i=0;i<5;i++) 
 *
-0004C:  CLRF   0B
-0004E:  MOVF   0B,W
-00050:  SUBLW  04
-00052:  BNC   0094
+0004A:  CLRF   0D
+0004C:  MOVF   0D,W
+0004E:  SUBLW  04
+00050:  BNC   00B4
 ....................    { 
-....................    output_e(0b00000111); 
-00054:  BCF    F96.0
-00056:  BCF    F96.1
-00058:  BCF    F96.2
-0005A:  BCF    F96.3
-0005C:  MOVLW  07
-0005E:  MOVWF  F8D
 ....................    output_a(0b00111111); 
-00060:  CLRF   F92
-00062:  MOVLW  3F
-00064:  MOVWF  F89
-....................    output_b(0b00001111); 
-00066:  CLRF   F93
-00068:  MOVLW  0F
-0006A:  MOVWF  F8A
+00052:  CLRF   F92
+00054:  MOVLW  3F
+00056:  MOVWF  F89
+....................    output_bit( PIN_B0, 1); 
+00058:  BSF    F8A.0
+0005A:  BCF    F93.0
+....................    output_bit( PIN_B1, 1); 
+0005C:  BSF    F8A.1
+0005E:  BCF    F93.1
+....................    output_bit( PIN_B2, 1); 
+00060:  BSF    F8A.2
+00062:  BCF    F93.2
+....................    output_bit( PIN_B3, 1); 
+00064:  BSF    F8A.3
+00066:  BCF    F93.3
+....................    output_bit( PIN_E0, 1); 
+00068:  BSF    F8D.0
+0006A:  BCF    F96.0
+....................    output_bit( PIN_E1, 1); 
+0006C:  BSF    F8D.1
+0006E:  BCF    F96.1
+....................    output_bit( PIN_E2, 1); 
+00070:  BSF    F8D.2
+00072:  BCF    F96.2
 ....................    delay_ms(retardo); 
-0006C:  MOVLW  02
-0006E:  MOVWF  0C
-00070:  MOVLW  FA
-00072:  MOVWF  0D
-00074:  BRA    0024
-00076:  DECFSZ 0C,F
-00078:  BRA    0070
-....................    output_b(0b00000000); 
-0007A:  CLRF   F93
-0007C:  CLRF   F8A
-....................    output_e(0b00000000); 
-0007E:  BCF    F96.0
-00080:  BCF    F96.1
-00082:  BCF    F96.2
-00084:  BCF    F96.3
-00086:  CLRF   F8D
+00074:  MOVLW  02
+00076:  MOVWF  0E
+00078:  MOVLW  FA
+0007A:  MOVWF  0F
+0007C:  RCALL  0024
+0007E:  DECFSZ 0E,F
+00080:  BRA    0078
 ....................    output_a(0b00000000); 
-00088:  CLRF   F92
-0008A:  CLRF   F89
-....................    output_b(0b00000000); 
-0008C:  CLRF   F93
-0008E:  CLRF   F8A
-00090:  INCF   0B,F
-00092:  BRA    004E
+00082:  CLRF   F92
+00084:  CLRF   F89
+....................    output_bit( PIN_B0, 0); 
+00086:  BCF    F8A.0
+00088:  BCF    F93.0
+....................    output_bit( PIN_B1, 0); 
+0008A:  BCF    F8A.1
+0008C:  BCF    F93.1
+....................    output_bit( PIN_B2, 0); 
+0008E:  BCF    F8A.2
+00090:  BCF    F93.2
+....................    output_bit( PIN_B3, 0); 
+00092:  BCF    F8A.3
+00094:  BCF    F93.3
+....................    output_bit( PIN_E0, 0); 
+00096:  BCF    F8D.0
+00098:  BCF    F96.0
+....................    output_bit( PIN_E1, 0); 
+0009A:  BCF    F8D.1
+0009C:  BCF    F96.1
+....................    output_bit( PIN_E2, 0); 
+0009E:  BCF    F8D.2
+000A0:  BCF    F96.2
+....................    delay_ms(retardo); 
+000A2:  MOVLW  02
+000A4:  MOVWF  0E
+000A6:  MOVLW  FA
+000A8:  MOVWF  0F
+000AA:  RCALL  0024
+000AC:  DECFSZ 0E,F
+000AE:  BRA    00A6
+000B0:  INCF   0D,F
+000B2:  BRA    004C
 ....................    } 
-00094:  GOTO   0176 (RETURN)
+000B4:  GOTO   01D0 (RETURN)
 .................... } 
 ....................  
 

@@ -15,29 +15,23 @@ void main (void){
    int16 resultado=0;
    int1 valError=0;
    int16 operando1=0,operando2=0;
-   int8 operacion=0;
    while(True){
    valError=0;
    operando1=input_c();
    operando2=input_d();
-   operacion=input_b();
-   if(input(PIN_B4) == 1 || operacion==1){
-   resultado = operando1 + operando2;
-   operacion=1;
+   if(input(PIN_B4) == 1){
+   resultado = operando1 + operando2;      
    }
-   else if(input(PIN_B5) == 1 || operacion==2)
+   else if(input(PIN_B5) == 1)
    {
    resultado = operando1 - operando2;
-   operacion=2;
    }
-   else if(input(PIN_B6) == 1 || operacion==3)
+   else if(input(PIN_B6) == 1)
    {
    resultado = operando1 * operando2;
-   operacion=3;
    }
-   else if(input(PIN_B7) == 1|| operacion==4)
+   else if(input(PIN_B7) == 1)
    {
-   operacion=4;
    if(input_d()==0)
    {
    valError=1;
@@ -51,7 +45,8 @@ void main (void){
    output_b(resultado>>6);
    output_e(resultado>>10);
    }
-   } 
+   }
+   
 }   
 void error()
 {

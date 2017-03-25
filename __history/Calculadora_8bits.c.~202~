@@ -20,7 +20,6 @@ void main (void){
    valError=0;
    operando1=input_c();
    operando2=input_d();
-   operacion=input_b();
    if(input(PIN_B4) == 1 || operacion==1){
    resultado = operando1 + operando2;
    operacion=1;
@@ -51,7 +50,8 @@ void main (void){
    output_b(resultado>>6);
    output_e(resultado>>10);
    }
-   } 
+   }
+   
 }   
 void error()
 {
