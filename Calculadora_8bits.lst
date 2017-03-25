@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.012, 41559               24-mar-17 18:22
+CCS PCH C Compiler, Version 5.012, 41559               25-mar-17 00:39
 
                Filename:   C:\Users\lazaax\Documents\GitHub\Practica\Calculadora_8bits.lst
 
@@ -35,7 +35,7 @@ CCS PCH C Compiler, Version 5.012, 41559               24-mar-17 18:22
 0001A:  MOVF   FF3,W
 0001C:  ADDWFC 00,W
 0001E:  MOVWF  02
-00020:  GOTO   01A8 (RETURN)
+00020:  GOTO   01B6 (RETURN)
 *
 000B8:  CLRF   01
 000BA:  CLRF   02
@@ -152,79 +152,79 @@ CCS PCH C Compiler, Version 5.012, 41559               24-mar-17 18:22
 00142:  SETF   F95
 00144:  CLRF   0B
 00146:  MOVFF  F83,0A
-....................    operacion=input_b(); 
-0014A:  SETF   F93
-0014C:  MOVFF  F81,0C
-....................    if(input(PIN_B4) == 1 || operacion==1){ 
-00150:  BSF    F93.4
-00152:  BTFSC  F81.4
-00154:  BRA    015A
-00156:  DECFSZ 0C,W
-00158:  BRA    016C
+....................    if(input(PIN_B4)==1) operacion=1; 
+0014A:  BSF    F93.4
+0014C:  BTFSS  F81.4
+0014E:  BRA    0156
+00150:  MOVLW  01
+00152:  MOVWF  0C
+00154:  BRA    0178
+....................    else if(input(PIN_B5)==1) operacion=2; 
+00156:  BSF    F93.5
+00158:  BTFSS  F81.5
+0015A:  BRA    0162
+0015C:  MOVLW  02
+0015E:  MOVWF  0C
+00160:  BRA    0178
+....................    else if(input(PIN_B6)==1) operacion=3; 
+00162:  BSF    F93.6
+00164:  BTFSS  F81.6
+00166:  BRA    016E
+00168:  MOVLW  03
+0016A:  MOVWF  0C
+0016C:  BRA    0178
+....................    else if(input(PIN_B7)==1) operacion=4; 
+0016E:  BSF    F93.7
+00170:  BTFSS  F81.7
+00172:  BRA    0178
+00174:  MOVLW  04
+00176:  MOVWF  0C
+....................    if(operacion==1){ 
+00178:  DECFSZ 0C,W
+0017A:  BRA    018A
 ....................    resultado = operando1 + operando2; 
-0015A:  MOVF   0A,W
-0015C:  ADDWF  08,W
-0015E:  MOVWF  05
-00160:  MOVF   0B,W
-00162:  ADDWFC 09,W
-00164:  MOVWF  06
-....................    operacion=1; 
-00166:  MOVLW  01
-00168:  MOVWF  0C
-....................    } 
-0016A:  BRA    01EC
-....................    else if(input(PIN_B5) == 1 || operacion==2) 
-0016C:  BSF    F93.5
-0016E:  BTFSC  F81.5
-00170:  BRA    0178
-00172:  MOVF   0C,W
-00174:  SUBLW  02
-00176:  BNZ   018A
-....................    { 
-....................    resultado = operando1 - operando2; 
-00178:  MOVF   0A,W
-0017A:  SUBWF  08,W
-0017C:  MOVWF  05
-0017E:  MOVF   0B,W
-00180:  SUBWFB 09,W
-00182:  MOVWF  06
-....................    operacion=2; 
-00184:  MOVLW  02
-00186:  MOVWF  0C
+0017C:  MOVF   0A,W
+0017E:  ADDWF  08,W
+00180:  MOVWF  05
+00182:  MOVF   0B,W
+00184:  ADDWFC 09,W
+00186:  MOVWF  06
 ....................    } 
 00188:  BRA    01EC
-....................    else if(input(PIN_B6) == 1 || operacion==3) 
-0018A:  BSF    F93.6
-0018C:  BTFSC  F81.6
-0018E:  BRA    0196
-00190:  MOVF   0C,W
-00192:  SUBLW  03
-00194:  BNZ   01B6
+....................    else if(operacion == 2) 
+0018A:  MOVF   0C,W
+0018C:  SUBLW  02
+0018E:  BNZ   019E
+....................    { 
+....................    resultado = operando1 - operando2; 
+00190:  MOVF   0A,W
+00192:  SUBWF  08,W
+00194:  MOVWF  05
+00196:  MOVF   0B,W
+00198:  SUBWFB 09,W
+0019A:  MOVWF  06
+....................    } 
+0019C:  BRA    01EC
+....................    else if(operacion == 3) 
+0019E:  MOVF   0C,W
+001A0:  SUBLW  03
+001A2:  BNZ   01C0
 ....................    { 
 ....................    resultado = operando1 * operando2; 
-00196:  MOVFF  09,0E
-0019A:  MOVFF  08,0D
-0019E:  MOVFF  0B,10
-001A2:  MOVFF  0A,0F
-001A6:  BRA    0004
-001A8:  MOVFF  02,06
-001AC:  MOVFF  01,05
-....................    operacion=3; 
-001B0:  MOVLW  03
-001B2:  MOVWF  0C
+001A4:  MOVFF  09,0E
+001A8:  MOVFF  08,0D
+001AC:  MOVFF  0B,10
+001B0:  MOVFF  0A,0F
+001B4:  BRA    0004
+001B6:  MOVFF  02,06
+001BA:  MOVFF  01,05
 ....................    } 
-001B4:  BRA    01EC
-....................    else if(input(PIN_B7) == 1|| operacion==4) 
-001B6:  BSF    F93.7
-001B8:  BTFSC  F81.7
-001BA:  BRA    01C2
-001BC:  MOVF   0C,W
-001BE:  SUBLW  04
-001C0:  BNZ   01EC
+001BE:  BRA    01EC
+....................    else if(operacion == 4) 
+001C0:  MOVF   0C,W
+001C2:  SUBLW  04
+001C4:  BNZ   01EC
 ....................    { 
-....................    operacion=4; 
-001C2:  MOVLW  04
-001C4:  MOVWF  0C
 ....................    if(input_d()==0) 
 001C6:  SETF   F95
 001C8:  MOVF   F83,F

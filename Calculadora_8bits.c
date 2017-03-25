@@ -20,24 +20,23 @@ void main (void){
    valError=0;
    operando1=input_c();
    operando2=input_d();
-   operacion=input_b();
-   if(input(PIN_B4) == 1 || operacion==1){
+   if(input(PIN_B4)==1) operacion=1;
+   else if(input(PIN_B5)==1) operacion=2;
+   else if(input(PIN_B6)==1) operacion=3;
+   else if(input(PIN_B7)==1) operacion=4;
+   if(operacion==1){
    resultado = operando1 + operando2;
-   operacion=1;
    }
-   else if(input(PIN_B5) == 1 || operacion==2)
+   else if(operacion == 2)
    {
    resultado = operando1 - operando2;
-   operacion=2;
    }
-   else if(input(PIN_B6) == 1 || operacion==3)
+   else if(operacion == 3)
    {
    resultado = operando1 * operando2;
-   operacion=3;
    }
-   else if(input(PIN_B7) == 1|| operacion==4)
+   else if(operacion == 4)
    {
-   operacion=4;
    if(input_d()==0)
    {
    valError=1;
