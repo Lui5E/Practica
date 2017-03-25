@@ -11,9 +11,11 @@ void error();
 void main (void){
    SETUP_ADC_PORTS(NO_ANALOGS);// para conversion a todos los puertos analogos a digitales
    setup_oscillator(OSC_32MHZ);
+   int1 valError=0; //variable de comprobacion de error
    int16 operando1=0,operando2=0,resultado=0; //Variables operandos y resultados
    int8 operacion=0; //variable para operaciones
    while(True){
+   valError=0;
    operando1=input_c();
    operando2=input_d();
    if(input(PIN_B4)==1) operacion=1; //suma
@@ -27,13 +29,18 @@ void main (void){
    {
    if(input_d()==0)//validacion de puerto d no este en 0
    {
+   valError=1; /*si esta en 0 valError cambia a 1, por lo tanto no entra
+               mostrar desplazamiendo*/
    error(); //funcion de error 
    }else
    resultado = operando1 / operando2;
    }
+   if(valError==0)
+   {
    output_a(resultado);
    output_b(resultado>>6);
    output_e(resultado>>10);
+   }
    } 
 }   
 void error()

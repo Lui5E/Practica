@@ -3,39 +3,38 @@
 001     _RETURN_
 002     @SCRATCH
 003     @SCRATCH
-005.0   main.valError
-006-007 main.operando1
-008-009 main.operando2
-00A-00B main.resultado
-00C     main.operacion
-00D     error.i
-00D-00E @DIV1616.P1
-00D-00E @MUL1616.P2
-00D     main.@SCRATCH1
-00E     main.@SCRATCH2
-00E     error.@SCRATCH1
-00F-010 @DIV1616.P1
-00F-010 @MUL1616.P2
-00F     @delay_ms1.P3
-011     @MUL1616.@SCRATCH1
-011     @DIV1616.@SCRATCH1
+005-006 main.operando1
+007-008 main.operando2
+009-00A main.resultado
+00B     main.operacion
+00C-00D @MUL1616.P1
+00C     error.i
+00C-00D @DIV1616.P1
+00C     main.@SCRATCH1
+00D     main.@SCRATCH2
+00D     error.@SCRATCH1
+00E     @delay_ms1.P1
+00E-00F @MUL1616.P2
+00E-00F @DIV1616.P3
+010     @MUL1616.@SCRATCH1
+010     @DIV1616.@SCRATCH1
 F83     PSP_DATA
 FB4.6   C1OUT
 FB4.7   C2OUT
 FBB     CCP_2
 FBB     CCP_2_LOW
 FBC     CCP_2_HIGH
-FBE     CCP_1_LOW
 FBE     CCP_1
+FBE     CCP_1_LOW
 FBF     CCP_1_HIGH
 FE1-FE2 @READ_PACKED_MEMORY.P1
 FE1-FE2 @WRITE_PACKED_MEMORY.P2
 FE9-FEA @READ_PROGRAM_MEMORY.P1
-FE9-FEA @READ_PACKED_MEMORY.P2
-FE9-FEA @WRITE_PROGRAM_MEMORY.P3
-FE9-FEA @WRITE_PACKED_MEMORY.P4
-FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
-FF6-FF8 @READ_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P3
+FE9-FEA @READ_PACKED_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
 
 ROM Allocation:
 000004  @MUL1616
@@ -50,10 +49,10 @@ Project Directory:
     C:\Users\lazaax\Documents\GitHub\Practica\
 
 Project Files:
-    Calculadora_8bits.c                                     [25-mar-17 01:11  CRC=15143E34]
+    Calculadora_8bits.c                                     [25-mar-17 01:16  CRC=A9D4B0FB]
     ..\..\..\..\..\Program Files (x86)\PICC\Devices\18F4620.h [10-sep-13 16:34  CRC=044A57BA]
 
-Source signature=1DA8EDA8
+Source signature=B269606F
 
 Units:
     Calculadora_8bits (main)
